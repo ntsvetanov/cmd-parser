@@ -268,6 +268,7 @@ TEST_CASE("test OO functionality") {
   p.add_option("--flag", "-f")
       .help("just=flag")
       .mode(optionparser::StorageMode::STORE_MULT_VALUES);
+
   p.add_option("--boolean", "-b")
       .help("boolean")
       .mode(optionparser::StorageMode::STORE_TRUE);

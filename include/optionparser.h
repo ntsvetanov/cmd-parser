@@ -57,12 +57,6 @@ public:
     m_mode = mode;
     return *this;
   }
-  
-  bool &required() { return m_required; }
-  Option &required(bool req) {
-    m_required = req;
-    return *this;
-  }
 
   bool &required() { return m_required; }
   Option &required(bool req) {
@@ -83,7 +77,7 @@ public:
   }
 
   std::string &default_value() { return m_default_value; }
-  
+
   Option &default_value(const std::string &default_value) {
     m_default_value = default_value;
     return *this;
@@ -104,6 +98,7 @@ public:
                                      const std::string &second_option,
                                      OptionType first_opt_type,
                                      OptionType second_opt_type);
+
 private:
   bool m_found = false;
   bool m_required = false;
@@ -165,7 +160,7 @@ std::string Option::get_destination(const std::string &first_option,
       if (first_opt_type == OptionType::POSITIONAL_OPT) {
         dest = first_option;
       } else if (second_opt_type == OptionType::POSITIONAL_OPT) {
-         dest = second_option;
+        dest = second_option;
       }
     }
   }
@@ -358,7 +353,7 @@ bool OptionParser::try_to_get_opt(std::vector<std::string> &arguments,
     return true;
   }
 
-  if (((option.mode() == STORE_VALUE) || 
+  if (((option.mode() == STORE_VALUE) ||
        (option.mode() == STORE_MULT_VALUES)) &&
       !option.found()) {
     if (get_value_arg(arguments, arg, option, flag)) {
